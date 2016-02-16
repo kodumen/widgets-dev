@@ -11,6 +11,6 @@ class WidgetController extends Controller
 {
     public function table()
     {
-
+        return view('table');
     }
 }
