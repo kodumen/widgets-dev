@@ -15,7 +15,7 @@ class Button extends Widget
      */
     public function url($url, $parameter = [])
     {
-        $this->url = url($url, $parameter);
+        $this->url = url($url) . '?' . http_build_query($parameter);
         return $this;
     }
 
