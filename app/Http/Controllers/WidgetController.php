@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -11,6 +12,7 @@ class WidgetController extends Controller
 {
     public function table()
     {
-        return view('table');
+        $data = User::all();
+        return view('table', ['data' => $data]);
     }
 }
