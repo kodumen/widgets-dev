@@ -12,7 +12,7 @@ class Widget
     {
         $this->data = $data;
         $this->name = snake_case(class_basename($this));
-        $this->template = config('widgets.templates.' . $this->name);
+        $this->template = config('widgets.templates.' . $this->name, 'widgets.blank');
     }
 
     /**
