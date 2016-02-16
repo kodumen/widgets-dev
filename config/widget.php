@@ -2,6 +2,6 @@
 
 return [
     'templates' => [
-        'table' => 'widget.table',
+        'table' => 'widgets.table',
     ],
 ];

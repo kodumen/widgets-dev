@@ -18,6 +18,7 @@ class Table extends Widget
 
     /**
      * Return this as an html table.
+     * @return string
      */
     public function build()
     {
@@ -26,7 +27,6 @@ class Table extends Widget
 
     /**
      * Return the column headers as html table headers.
-     *
      * @return string
      */
     private function buildHeaders()
@@ -42,7 +42,6 @@ class Table extends Widget
 
     /**
      * Return table data as html rows.
-     *
      * @return string
      */
     private function buildRows()
