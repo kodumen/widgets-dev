@@ -5,15 +5,20 @@ namespace App\Http\Widgets;
 class Table extends Widget
 {
     private $columns = [];
+    private $callbacks = [];
 
     /**
      * Add a column to the table.
      * @param $key
      * @param $label
+     * @param \Closure $callback
      */
-    public function column($key, $label)
+    public function column($key, $label, \Closure $callback = null)
     {
         $this->columns[$key] = $label;
+        if (starts_with($key, '_') && $callback !== null) {
+            $this->callbacks[$key] = $callback;
+        }
     }
 
     /**
@@ -50,7 +55,11 @@ class Table extends Widget
         foreach ($this->data as $d) {
             $html .= '<tr>';
             foreach ($this->columns as $key => $label) {
-                $html .= '<td>' . $d->$key . '</td>';
+                if (starts_with($key, '_')) {
+                    $html .= '<td>' . $this->callbacks[$key]($d) . '</td>';
+                } else {
+                    $html .= '<td>' . $d->$key . '</td>';
+                }
             }
             $html .= '</tr>';
         }
