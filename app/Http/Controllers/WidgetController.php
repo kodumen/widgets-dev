@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Widgets\Table;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -13,6 +14,13 @@ class WidgetController extends Controller
     public function table()
     {
         $data = User::all();
-        return view('table', ['data' => $data]);
+
+        $table = new Table($data);
+        $table->column('name', 'Name');
+        $table->column('email', 'Email');
+        $table->column('created_at', 'Created at');
+        $table->column('updated_at', 'Updated at');
+
+        return view('table_demo', ['table' => $table]);
     }
 }
