@@ -8,9 +8,8 @@ class Widget
     private $name;
     private $template;
 
-    public function __construct($data)
+    public function __construct()
     {
-        $this->data = $data;
         $this->name = snake_case(class_basename($this));
         $this->template = config('widget.templates.' . $this->name, 'widgets.blank');
     }
