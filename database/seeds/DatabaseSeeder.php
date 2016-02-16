@@ -11,6 +11,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UserTableSeeder::class);
+        $faker = \Faker\Factory::create();
+
+        for ($i = 0; $i < 100; $i++) {
+            \App\User::create([
+                'name' => $faker->userName,
+                'email' => $faker->email,
+                'password' => bcrypt($faker->password()),
+            ]);
+        }
     }
 }
